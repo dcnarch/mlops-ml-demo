@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -13,9 +11,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 clf = RandomForestClassifier()
 clf.fit(X_train, y_train)
 
-# Save model to a writable location in the user profile
-output_dir = Path.home() / "mlops-model-output"
-output_dir.mkdir(parents=True, exist_ok=True)
-output_path = output_dir / "iris_model.pkl"
-joblib.dump(clf, output_path)
-print(f"Model trained and saved as {output_path}")
+# Save model
+joblib.dump(clf, "iris_model.pkl")
+print(" Model trained and saved as iris_model.pkl")
